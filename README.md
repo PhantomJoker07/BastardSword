@@ -1,7 +1,7 @@
 # BastardSword
 A simple bastard sword modeled using teachingCG's project as base.
 
-##Authors: 
+## Authors:
 # Gabriel Fernando Martín Fernández C411 
 # Miguel Alejandro Asin Barthelemy C411
 
