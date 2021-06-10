@@ -2,8 +2,8 @@
 A simple bastard sword modeled using teachingCG's project as base.
 
 ## Authors:
-# Gabriel Fernando Martín Fernández C411 
-# Miguel Alejandro Asin Barthelemy C411
+### Gabriel Fernando Martín Fernández C411 
+### Miguel Alejandro Asin Barthelemy C411
 
 
 El objeto que decidimos recrear fue una espada bastarda. Nos basamos en una imagen donde se muestran dos modelos distintos de este tipo de espada y la vaina de una de ellas. Por simplicidad y debido a la dificultad de generar todas las geometrías de los múltiples objetos (ya de por si complejos) involucrados en esta imagen se recreó solamente la primera de las espadas. Se trató de ser lo más fiel posible a la forma y composición de la espada mientras que se modificaron algunos aspectos principalmente respecto a las texturas como el acabado y brillo del metal y el piso de madera. 
