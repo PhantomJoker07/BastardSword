@@ -2,11 +2,6 @@
 A simple bastard sword modeled using teachingCG's project as base.
 
 
-## Authors:
-### Gabriel Fernando Martín Fernández C411 
-### Miguel Alejandro Asin Barthelemy C411
-
-
 ## Aspectos Generales
 El objeto que decidimos recrear fue una espada bastarda. Nos basamos en una imagen donde se muestran dos modelos distintos de este tipo de espada y la vaina de una de ellas. Por simplicidad y debido a la dificultad de generar todas las geometrías de los múltiples objetos (ya de por si complejos) involucrados en esta imagen se recreó solamente la primera de las espadas. Se trató de ser lo más fiel posible a la forma y composición de la espada mientras que se modificaron algunos aspectos principalmente respecto a las texturas como el acabado y brillo del metal y el piso de madera. 
 
@@ -25,3 +20,8 @@ Otro factor importante en la imagen generada fue la illuminación pues en la fot
 ## Otros detalles de implementación
 
 Para facilitar trabajo con las funciones ya implementadas se realizaron algunas modificaciones y adiciones a estas, principalmente en el trabajo con los meshes. Se debe destacar que se definió el operador + entre los meshes para facilitar la operación de "fusionarlos" que es prácticamente la base sobre la cual construimos estructuras complejas partiendo de otras más simples. Otro cambio a notar fue la orientación de los vectores normales de los meshes triangulares. Debido a las distintas técnicas y formas en la que estos meshes iban a ser generados fue de interés añadir un parámetro para especificar la dirección de estos vectore normales y asi evitar que el exterior de nuestra figura termine siendo la "cara oculta" de los meshes y trunque los resultados esperados.     
+
+
+## Authors:
+### Gabriel Fernando Martín Fernández C411 
+### Miguel Alejandro Asin Barthelemy C411
