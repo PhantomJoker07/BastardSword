@@ -276,14 +276,14 @@ namespace Renderer
                 Transforms.Identity);
 
             // Light source
-            scene.Add(sphereModel, new Material
-            {
-                Emissive = LightIntensity / (4*pi), // power per unit area
-                WeightDiffuse = 0.1f,
-                WeightFresnel = 1.0f, // Glass sphere
-                RefractionIndex = 5.0f
-            },
-                mul(Transforms.Scale(4.4f, 2.4f, 4.4f), Transforms.Translate(LightPosition)));
+            //scene.Add(sphereModel, new Material
+            //{
+                //Emissive = LightIntensity / (4*pi), // power per unit area
+                //WeightDiffuse = 0.1f,
+                //WeightFresnel = 1.0f, // Glass sphere
+                //RefractionIndex = 5.0f
+            //},
+                //mul(Transforms.Scale(4.4f, 2.4f, 4.4f), Transforms.Translate(LightPosition)));
         }
 
         #endregion
@@ -507,12 +507,12 @@ namespace Renderer
         {
             // Texture to output the image.
             //Texture2D texture = new Texture2D(128, 128);  //Very Low
-            Texture2D texture = new Texture2D(256, 256);  //Low
-            //Texture2D texture = new Texture2D(512, 512);  //Original
+            //Texture2D texture = new Texture2D(256, 256);  //Low
+            Texture2D texture = new Texture2D(512, 512);  //Original
             //Texture2D texture = new Texture2D(1024, 1024);  //HD ~
             //Texture2D texture = new Texture2D(4096, 4096);  //4k ~
 
-            bool UseRT = false; //DEFAULT false
+            bool UseRT = True; //DEFAULT false
             if (UseRT)
             {
                 Stopwatch stopwatch = new Stopwatch();
