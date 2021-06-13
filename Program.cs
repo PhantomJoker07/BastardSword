@@ -1,4 +1,4 @@
-﻿using GMath;
+using GMath;
 using Rendering;
 using Meshes;
 using System;
@@ -219,22 +219,22 @@ namespace Renderer
             Material GraySteel = new Material
             {
                 //DiffuseMap = steelTexture,
-                Specular = float3 (0.72f, 0.72f, 0.72f)*1.3f,
+                //Specular = float3 (0.72f, 0.72f, 0.72f)*1.3f,
                 //SpecularPower = 250,
-                Diffuse = float3(0.9f, 0.9f, 0.9f),
-                RefractionIndex = 0.023f,
-                WeightMirror = 0.8f,
-                WeightDiffuse = 1.25f,
+                Diffuse = float3(0.9f, 0.9f, 0.9f)*1.25f,
+                RefractionIndex = 0.025f,
+                WeightMirror = 0.2f,
+                WeightDiffuse = 1f,
             };
 
             Material BadSteelA = new Material
             {
                 DiffuseMap = silverTexture,
-                Specular = float3 (0.75f, 0.75f, 0.75f),
-                SpecularPower = 270,
-                Diffuse = float3(0.95f, 0.95f, 0.95f)*2.3f,
-                RefractionIndex = 0.027f,
-                WeightMirror = 1.25f,
+                //Specular = float3 (0.75f, 0.75f, 0.75f),
+                //SpecularPower = 270,
+                Diffuse = float3(0.95f, 0.95f, 0.95f)*2f,
+                RefractionIndex = 0.025f,
+                WeightMirror = 0.75f,
                 WeightDiffuse = 1,
             };
 
@@ -276,14 +276,14 @@ namespace Renderer
                 Transforms.Identity);
 
             // Light source
-            //scene.Add(sphereModel, new Material
-            //{
-                //Emissive = LightIntensity / (4*pi), // power per unit area
-                //WeightDiffuse = 0.1f,
-                //WeightFresnel = 1.0f, // Glass sphere
-                //RefractionIndex = 5.0f
-            //},
-                //mul(Transforms.Scale(4.4f, 2.4f, 4.4f), Transforms.Translate(LightPosition)));
+            scene.Add(sphereModel, new Material
+            {
+                Emissive = LightIntensity / (4*pi), // power per unit area
+                WeightDiffuse = 0.1f,
+                WeightFresnel = 1.0f, // Glass sphere
+                RefractionIndex = 5.0f
+            },
+                mul(Transforms.Scale(4.4f, 2.4f, 4.4f), Transforms.Translate(LightPosition)));
         }
 
         #endregion
@@ -314,16 +314,14 @@ namespace Renderer
 
         // Scene Setup
         static float3 CameraPosition = float3(-10f, 45f, 23.5f);
-        //static float3 CameraPosition = float3(-10f, 45f, 21.5f);  //FINAL
 
         static float3 LightPosition = float3(10.0F, 45, 25F);
-        static float3 LightIntensity = float3(1, 1, 1) * 6850;
+        static float3 LightIntensity = float3(1, 1, 1) * 6750;
 
         static void Raytracing (Texture2D texture)
         {
             // View and projection matrices
             float4x4 viewMatrix = Transforms.LookAtLH(CameraPosition, float3(-5, 1, 20f), float3(0, 1, 0)); 
-            //float4x4 viewMatrix = Transforms.LookAtLH(CameraPosition, float3(-5, 1, 18f), float3(0, 1, 0)); //FINAL
 
             float4x4 projectionMatrix = Transforms.PerspectiveFovLH(pi_over_4, texture.Height / (float)texture.Width, 0.01f, 20);
 
@@ -417,7 +415,7 @@ namespace Renderer
                     RayDescription ray = RayDescription.FromScreen(px + 0.5f, py + 0.5f, texture.Width, texture.Height, inverse(viewMatrix), inverse(projectionMatrix), 0, 1000);
 
                     RTRayPayload coloring = new RTRayPayload();
-                    coloring.Bounces = 7;
+                    coloring.Bounces = 5;
 
                     raycaster.Trace(scene, ray, ref coloring);
 
@@ -512,7 +510,7 @@ namespace Renderer
             //Texture2D texture = new Texture2D(1024, 1024);  //HD ~
             //Texture2D texture = new Texture2D(4096, 4096);  //4k ~
 
-            bool UseRT = True; //DEFAULT false
+            bool UseRT = true; //DEFAULT false
             if (UseRT)
             {
                 Stopwatch stopwatch = new Stopwatch();
